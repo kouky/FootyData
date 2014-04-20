@@ -1,0 +1,52 @@
+season: 2014
+rounds:
+  - id: 1
+    startDate: 2014-03-14
+    endDate: 2014-03-23 19:50
+    timeZone: AEST
+    games:
+      - homeTeam: COLL
+        awayTeam: FRE
+        venue: Etihad Stadium
+        date: 2014-03-14
+        timeZone: AEDT
+      - homeTeam: GWS
+        awayTeam: SYD
+        venue: Spotless Stadium
+        date: 2014-03-15 16:40
+        timeZone: AEDT
+      - homeTeam: GC
+        awayTeam: RICH
+        venue: Metricon Stadium
+        date: 2014-03-15 18:40
+        timeZone: AEST
+      - homeTeam: CARL
+        awayTeam: PORT
+        venue: Etihad Stadium
+        date: 2014-03-16 19:40
+        timeZone: AEDT
+      - homeTeam: GEEL
+        awayTeam: ADEL
+        venue: Simonds Stadium
+        date: 2014-03-20 19:10
+        timeZone: AEDT
+      - homeTeam: NMFC
+        awayTeam: ESS
+        venue: Etihad Stadium
+        date: 2014-03-21 19:50
+        timeZone: AEDT
+      - homeTeam: HAW
+        awayTeam: BRIS
+        venue: Aurora Stadium
+        date: 2014-03-22 18:40
+        timeZone: AEDT
+      - homeTeam: STK
+        awayTeam: MEL
+        venue: Etihad Stadium
+        date: 2014-03-22 19:40
+        timeZone: AEDT
+      - homeTeam: WCE
+        awayTeam: WB
+        venue: Patersons Stadium
+        date: 2014-03-23 16:40
+        timeZone: AWST
