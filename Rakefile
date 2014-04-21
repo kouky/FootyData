@@ -4,7 +4,7 @@ require 'active_support/core_ext/hash/indifferent_access'
 require 'active_support/core_ext/object/blank'
 
 desc "Build all json"
-task :json => ['json:fixture', 'json:teams'] do
+task :json => ['json:fixture', 'json:ladder'] do
 end
 
 namespace :json do
@@ -15,10 +15,10 @@ namespace :json do
     Build.to_json({obj: fixture.data, dest: :fixture})
   end
 
-  desc "Build teams json"
-  task :teams do
-    teams = Source.to_hash(:teams)
-    Build.to_json({obj: teams, dest: :teams})
+  desc "Build ladder json"
+  task :ladder do
+    ladder = Source.to_hash(:ladder)
+    Build.to_json({obj: ladder, dest: :ladder})
   end
 
 end
@@ -42,7 +42,7 @@ class Fixture
 
   def initialize
     @data = Source.to_hash(:fixture)
-    @teams = Source.to_hash(:teams)
+    @ladder = Source.to_hash(:ladder)
     enumerate_teams
   end
 
@@ -58,7 +58,7 @@ class Fixture
   end
 
   def find_team_by_short_name(short_name)
-    team = @teams[:teams].find do |team|
+    team = @ladder[:teams].find do |team|
       team[:shortName] == short_name
     end
 
