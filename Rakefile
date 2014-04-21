@@ -9,8 +9,8 @@ namespace :json do
 
   desc "Build fixture json"
   task :fixture do
-    fixture = Source.to_hash(:fixture)
-    Build.to_json({obj: fixture, dest: :fixture})
+    fixture = Fixture.new()
+    Build.to_json({obj: fixture.data, dest: :fixture})
   end
 
   desc "Build teams json"
@@ -32,5 +32,13 @@ class Build
     File.open("build/#{opts[:dest].to_s}.json", 'w') do |f|
       f.puts ActiveSupport::JSON.encode(opts[:obj])
     end
+  end
+end
+
+class Fixture
+  attr_accessor :data
+
+  def initialize
+    @data = Source.to_hash(:fixture)
   end
 end
