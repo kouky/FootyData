@@ -41,5 +41,24 @@ class Fixture
 
   def initialize
     @data = Source.to_hash(:fixture)
+    @teams = Source.to_hash(:teams)
+    enumerate_teams
+  end
+
+  private
+
+  def enumerate_teams
+    @data[:rounds].each do |round|
+      round[:games].each do |game|
+        game[:homeTeam] = find_team_by_short_name game[:homeTeam]
+        game[:awayTeam] = find_team_by_short_name game[:awayTeam]
+      end
+    end
+  end
+
+  def find_team_by_short_name(short_name)
+    @teams[:teams].find do |team|
+      team[:shortName] == short_name
+    end
   end
 end
