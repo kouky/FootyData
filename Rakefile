@@ -1,5 +1,6 @@
 require 'yaml'
 require 'active_support/json/encoding'
+require 'active_support/core_ext/hash/indifferent_access'
 
 desc "Build all json"
 task :json => ['json:fixture', 'json:teams'] do
@@ -23,7 +24,7 @@ end
 
 class Source
   def self.to_hash(type)
-    hash = YAML::load File.open("src/#{type.to_s}.yml")
+    YAML::load(File.open("src/#{type.to_s}.yml")).with_indifferent_access
   end
 end
 
