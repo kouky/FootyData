@@ -1,6 +1,7 @@
 require 'yaml'
 require 'active_support/json/encoding'
 require 'active_support/core_ext/hash/indifferent_access'
+require 'active_support/core_ext/object/blank'
 
 desc "Build all json"
 task :json => ['json:fixture', 'json:teams'] do
@@ -57,8 +58,11 @@ class Fixture
   end
 
   def find_team_by_short_name(short_name)
-    @teams[:teams].find do |team|
+    team = @teams[:teams].find do |team|
       team[:shortName] == short_name
     end
+
+    raise "Could not find team #{short_name}" if team.blank?
+    team
   end
 end
