@@ -4,27 +4,16 @@ require 'active_support/core_ext/hash/indifferent_access'
 require 'active_support/core_ext/object/blank'
 require 'fog'
 
-desc "Build all json"
-task :json => ['json:fixture', 'json:ladder'] do
+desc "Build fixture and ladder json"
+task :json do
+  fixture = Fixture.new()
+  Build.to_json({obj: fixture.data, dest: :fixture})
+
+  ladder = Source.to_hash(:ladder)
+  Build.to_json({obj: ladder, dest: :ladder})
 end
 
-namespace :json do
-
-  desc "Build fixture json"
-  task :fixture do
-    fixture = Fixture.new()
-    Build.to_json({obj: fixture.data, dest: :fixture})
-  end
-
-  desc "Build ladder json"
-  task :ladder do
-    ladder = Source.to_hash(:ladder)
-    Build.to_json({obj: ladder, dest: :ladder})
-  end
-
-end
-
-desc "Sync all json files to CDN"
+desc "Sync json files to CDN"
 task :sync do
   cloud = CloudFiles.new
   cloud.sync(:ladder)
