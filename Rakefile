@@ -66,3 +66,15 @@ class Fixture
     team
   end
 end
+
+class Rackspace
+  attr_reader :user_name, :api_key, :region, :container
+
+  def initialize
+    credentials = YAML::load(File.open(".rackspace.yml")).with_indifferent_access
+    @user_name = credentials[:rackspace_username]
+    @api_key = credentials[:rackspace_api_key]
+    @region = credentials[:rackspace_region]
+    @container = credentials[:rackspace_container]
+  end
+end
