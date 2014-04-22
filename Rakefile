@@ -2,6 +2,7 @@ require 'yaml'
 require 'active_support/json/encoding'
 require 'active_support/core_ext/hash/indifferent_access'
 require 'active_support/core_ext/object/blank'
+require 'fog'
 
 desc "Build all json"
 task :json => ['json:fixture', 'json:ladder'] do
@@ -21,6 +22,13 @@ namespace :json do
     Build.to_json({obj: ladder, dest: :ladder})
   end
 
+end
+
+desc "Sync all json files to CDN"
+task :sync do
+  cloud = CloudFiles.new
+  cloud.sync(:ladder)
+  cloud.sync(:fixture)
 end
 
 class Source
@@ -64,6 +72,28 @@ class Fixture
 
     raise "Could not find team #{short_name}" if team.blank?
     team
+  end
+end
+
+class CloudFiles
+  def initialize
+    @rackspace = Rackspace.new()
+    @storage = Fog::Storage.new({
+      provider:           'Rackspace',
+      rackspace_username: @rackspace.user_name,
+      rackspace_api_key:  @rackspace.api_key,
+      rackspace_region:   @rackspace.region.to_sym
+    })
+    @directory = @storage.directories.get @rackspace.container
+  end
+
+  def sync(type)
+    file = @directory.files.create(
+      key:    "#{type.to_s}.json",
+      body:   File.open("build/#{type.to_s}.json"),
+      public: true
+    )
+    file.save
   end
 end
 
