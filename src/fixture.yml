@@ -2,7 +2,7 @@ season: 2014
 rounds:
   - id: 1
     startDate: 2014-03-14
-    endDate: 2014-03-23 19:50
+    endDate: 2014-03-23
     timeZone: AEST
     games:
       - homeTeam: COLL
