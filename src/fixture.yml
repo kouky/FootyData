@@ -8,7 +8,7 @@ rounds:
       - homeTeam: COLL
         awayTeam: FRE
         venue: Etihad Stadium
-        date: 2014-03-14
+        date: 2014-03-14 19:50
         timeZone: AEDT
       - homeTeam: GWS
         awayTeam: SYD
