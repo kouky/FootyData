@@ -8,3 +8,11 @@ Install bundler and gems:
 
     gem install bundler
     bundle install
+
+## Build JSON
+
+    rake json
+
+## Sync JSON to Cloudfiles CDN
+
+    rake sync
