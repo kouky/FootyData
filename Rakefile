@@ -41,6 +41,7 @@ class Fixture
     @data = Source.to_hash(:fixture)
     @ladder = Source.to_hash(:ladder)
     enumerate_teams
+    enumerate_game_ids
   end
 
   private
@@ -54,6 +55,14 @@ class Fixture
     end
   end
 
+  def enumerate_game_ids
+    @data[:rounds].each do |round|
+      round[:games].each_with_index do |game, index|
+        game[:id] = numeric_id_for_game(@data[:season], round[:id], index)
+      end
+    end
+  end
+
   def find_team_by_short_name(short_name)
     team = @ladder[:teams].find do |team|
       team[:shortName] == short_name
@@ -61,6 +70,13 @@ class Fixture
 
     raise "Could not find team #{short_name}" if team.blank?
     team
+  end
+
+  def numeric_id_for_game(season, round_id, game_index)
+    season_suffix = season.to_s[-2..-1]
+    padded_round_id = "%02d" % round_id
+    padded_game_id = "%02d" % (game_index + 1)
+    (season_suffix + padded_round_id + padded_game_id).to_i
   end
 end
 
