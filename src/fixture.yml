@@ -100,3 +100,53 @@ rounds:
         venue: Etihad Stadium
         date: 2014-03-30 16:40
         timeZone: AEDT
+  - id: 3
+    startDate: 2014-04-04
+    endDate: 2014-04-06
+    timeZone: AEST
+    games:
+      - homeTeam: HAW
+        awayTeam: FRE
+        venue: MCG
+        date: 2014-04-04 19:50
+        timeZone: AEDT
+      - homeTeam: WB
+        awayTeam: RICH
+        venue: Etihad Stadium
+        date: 2014-04-05 13:45
+        timeZone: AEDT
+      - homeTeam: ADEL
+        awayTeam: SYD
+        venue: Adelaide Oval
+        date: 2014-04-05 14:10
+        timeZone: ACDT
+      - homeTeam: GC
+        awayTeam: BRIS
+        venue: Metricon Stadium
+        date: 2014-04-05 16:40
+        timeZone: AEST
+      - homeTeam: WCE
+        awayTeam: STK
+        venue: Patersons Stadium
+        date: 2014-04-05 19:40
+        timeZone: AWST
+      - homeTeam: COLL
+        awayTeam: GEEL
+        venue: MCG
+        date: 2014-04-05 19:40
+        timeZone: AEDT
+      - homeTeam: GWS
+        awayTeam: MEL
+        venue: Spotless Stadium
+        date: 2014-04-06 13:10
+        timeZone: AEST
+      - homeTeam: NMFC
+        awayTeam: PORT
+        venue: Etihad Stadium
+        date: 2014-04-06 16:10
+        timeZone: AEST
+      - homeTeam: ESS
+        awayTeam: CARL
+        venue: MCG
+        date: 2014-04-06 19:10
+        timeZone: AEST
